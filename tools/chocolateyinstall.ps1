@@ -1,6 +1,6 @@
 ﻿$ErrorActionPreference = 'Stop';
 $toolsDir   = "$(Split-Path -parent $MyInvocation.MyCommand.Definition)"
-. "$toolsDir\chocolateyhelper.ps1"
+. "$(Join-Path $toolsDir chocolateyhelper.ps1)"
 
 $url        = 'https://www.nordicsemi.com/-/media/Software-and-other-downloads/Desktop-software/nRF-command-line-tools/sw/Versions-10-x-x/nRF-Command-Line-Tools_10_2_1_Installer_64.exe'
 $packageArgs = @{
@@ -14,7 +14,7 @@ $packageArgs = @{
   silentArgs    = "/qn /norestart /l*v `"$($env:TEMP)\$($packageName).$($env:chocolateyPackageVersion).MsiInstall.log`""
   validExitCodes= @(0, 3010, 1641)
 }
-$ahkProc = Start-Ahk('chocolateyInstall.ahk')
+$ahkProc = Start-Ahk('chocolateyhelper.ahk')
 
 Install-ChocolateyPackage @packageArgs
 

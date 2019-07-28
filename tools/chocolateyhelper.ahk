@@ -37,3 +37,8 @@ sleep 2000
 
 WinWait,nRF-Command-Line-Tools_10_2_1 ahk_class WixStdBA ahk_exe nRF-Command-Line-Tools_10_2_1_Installer_64.exe,,180
 ControlClick,Button19,nRF-Command-Line-Tools_10_2_1 ahk_class WixStdBA ahk_exe nRF-Command-Line-Tools_10_2_1_Installer_64.exe
+
+sleep 1000
+
+WinWait,SEGGER ahk_class #32770 ahk_exe JLinkDLLUpdater.exe,,180
+ControlClick,Button1,SEGGER ahk_class #32770 ahk_exe JLinkDLLUpdater.exe

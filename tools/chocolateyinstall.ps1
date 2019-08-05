@@ -22,5 +22,6 @@ Install-ChocolateyPath "$($env:SystemDrive)\Program Files (x86)\SEGGER\JLink_V64
 Install-ChocolateyPath "$($env:SystemDrive)\Program Files\Nordic Semiconductor\nrf-command-line-tools\bin" -PathType 'Machine'
 
 # minimum delay to ensure the autohotkey takes efect
+Write-Host "now should be over!"
 & Start-Sleep 1
 if (Get-Process -id $ahkProc.Id -ErrorAction SilentlyContinue) {Stop-Process -id $ahkProc.Id}

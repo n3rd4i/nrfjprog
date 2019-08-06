@@ -1,6 +1,7 @@
 ﻿$ErrorActionPreference = 'Stop';
 $toolsDir   = "$(Split-Path -parent $MyInvocation.MyCommand.Definition)"
 . "$(Join-Path $toolsDir chocolateyhelper.ps1)"
+. "$(Join-Path $toolsDir commonEnv.ps1)"
 
 $url        = 'https://www.nordicsemi.com/-/media/Software-and-other-downloads/Desktop-software/nRF-command-line-tools/sw/Versions-10-x-x/nRF-Command-Line-Tools_10_2_1_Installer_64.exe'
 $packageArgs = @{
@@ -18,10 +19,9 @@ $ahkProc = Start-Ahk('chocolateyhelper.ahk')
 
 Install-ChocolateyPackage @packageArgs
 
-Install-ChocolateyPath "$($env:SystemDrive)\Program Files (x86)\SEGGER\JLink_V644e" -PathType 'Machine'
-Install-ChocolateyPath "$($env:SystemDrive)\Program Files\Nordic Semiconductor\nrf-command-line-tools\bin" -PathType 'Machine'
+Install-ChocolateyPath "$JLINK_BIN_PATH" -PathType 'Machine'
+Install-ChocolateyPath "$NRF_BIN_PATH" -PathType 'Machine'
 
 # minimum delay to ensure the autohotkey takes efect
-Write-Host "now should be over!"
 & Start-Sleep 1
 if (Get-Process -id $ahkProc.Id -ErrorAction SilentlyContinue) {Stop-Process -id $ahkProc.Id}

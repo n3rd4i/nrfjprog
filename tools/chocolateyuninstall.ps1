@@ -1,4 +1,11 @@
 ﻿$ErrorActionPreference = 'Stop';
+. "$(Join-Path $toolsDir commonEnv.ps1)"
+
+$path = [System.Environment]::GetEnvironmentVariable('PATH', 'Machine')
+$path = ($path.Split(';') | Where-Object { $_ -ne "$JLINK_BIN_PATH" }) -join ';'
+$path = ($path.Split(';') | Where-Object { $_ -ne "$NRF_BIN_PATH" }) -join ';'
+[System.Environment]::SetEnvironmentVariable('PATH', $path, 'Machine')
+
 $packageArgs = @{
   packageName   = $env:ChocolateyPackageName
   softwareName  = 'nrfjprog*'

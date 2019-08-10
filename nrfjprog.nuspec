@@ -44,10 +44,7 @@ The nRF Command Line Tools is used for development, programming and debugging of
 
     <!-- Specifying dependencies and version ranges? https://docs.nuget.org/create/versioning#specifying-version-ranges-in-.nuspec-files -->
     <dependencies>
-      <dependency id="autohotkey.portable" />
-      <dependency id="vcredist140" />
-      <!-- <dependency id="vcredist2017" /> -->
-      <!-- <dependency id="vcredist2017"  version="14.15.26706" /> -->
+      <dependency id="vcredist2017" />
     </dependencies>
   </metadata>
   <files>

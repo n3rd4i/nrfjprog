@@ -1,4 +1,5 @@
 ﻿$ErrorActionPreference = 'Stop';
+$toolsDir   = "$(Split-Path -parent $MyInvocation.MyCommand.Definition)"
 . "$(Join-Path $toolsDir commonEnv.ps1)"
 
 $path = [System.Environment]::GetEnvironmentVariable('PATH', 'Machine')

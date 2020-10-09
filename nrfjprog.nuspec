@@ -12,7 +12,7 @@
 
     <!-- == SOFTWARE SPECIFIC SECTION == -->
     <!-- This section is about the software itself -->
-    <title>nrfjprog (Install)</title>
+    <title>nRF Command Line Tools</title>
     <authors>Nordic Semiconductor</authors>
     <!-- projectUrl is required for the community feed -->
     <projectUrl>https://www.nordicsemi.com/Software-and-Tools/Development-Tools/nRF-Command-Line-Tools</projectUrl>

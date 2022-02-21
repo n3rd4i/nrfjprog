@@ -1,7 +1,7 @@
 import-module au
 
 $domain   = 'https://www.nordicsemi.com'
-$releases = "$domain/Software-and-tools/Development-Tools/nRF-Command-Line-Tools/Download"
+$releases = "$domain/Products/Development-Tools/nRF-Command-Line-Tools/Download"
 
 function global:au_SearchReplace {
   @{
@@ -12,15 +12,16 @@ function global:au_SearchReplace {
   }
 }
 function global:au_GetLatest {
+  $extension = '-x64.exe'
+
   $download_page = Invoke-WebRequest -Uri $releases -UseBasicParsing #1
   $regex    = 'sc_DownloadFiles_CommandLineTools'
   $url_raw  = $download_page.links | ? id -match $regex | select -First 1 -expand href
-  $url_x64  = $url_raw -replace '_WIN32.zip','_WIN64.zip'
+  $url_x64  = $url_raw -replace '-x86.exe', $extension
   $url      = ($domain, $url_x64) -Join('')
 
-  $token = $url -split 'nRF-Command-Line-Tools_' | select -First 1 -Skip 1 #3
-  $raw_version = $token -split '_WIN64.zip' | select -Last 1 -Skip 1 #3
-  $version = $raw_version -replace '_','.'
+  $token = $url -split 'nRF-Command-Line-Tools-' | select -First 1 -Skip 1 #3
+  $version = $token -split $extension | select -Last 1 -Skip 1 #3
   return @{ Version = $version; URL32 = $url }
 }
 
